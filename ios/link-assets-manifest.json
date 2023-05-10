@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Lato-Black.ttf",
+      "sha1": "b9c952639741f5b7479e1ff6d1561a3df7e8f83a"
+    },
+    {
+      "path": "assets/fonts/NotoSerif-Regular.ttf",
+      "sha1": "3f15509c797a957769316e054c4f7f43ef1d9563"
+    },
+    {
+      "path": "assets/fonts/Pacifico.ttf",
+      "sha1": "e2c6924078183bd9fee72e8a6b3992dc637580f0"
+    },
+    {
+      "path": "assets/fonts/StyleScript-Regular.ttf",
+      "sha1": "38555a9e885c12c12f44397caeeeb986acba4ec1"
+    }
+  ]
+}
