@@ -9,6 +9,7 @@ import { Icon } from 'react-native-elements';
 const RegisterScreen = (props) => {
     const { navigation } = props
 
+    const dispatch = useDispatch()
     const globalProfileData = useSelector(store => store.profileReducer)
     const [form, setForm] = useState({ username: '', email: '', password: '' })
     const onChangeInput = (inputType, value) => {
