@@ -1,9 +1,13 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store / actions / profileAction';
 
 const LoginScreen = (props) => {
     const { navigation } = props
+
+    const dispatch = useDispatch()
     return (
         <ScrollView contentContainerStyle={styles.scroll}>
             <View style={styles.mainContainer}>
