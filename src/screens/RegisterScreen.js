@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
 import { useEffect, useState } from 'react';
@@ -28,6 +28,16 @@ const RegisterScreen = (props) => {
         }
         else {
             dispatch(createProfile(form))
+            Alert.alert(
+                "Success",
+                "Successfully create an account!",
+                [
+                    {
+                        text: "OK",
+                        onPress: () => navigation.navigate('Login')
+                    }
+                ]
+            );
         }
     };
     useEffect(() => {
@@ -51,7 +61,7 @@ const RegisterScreen = (props) => {
                         }
                     />
                 </View>
-                {/* <View style={styles.inputContainer}>
+                <View style={styles.inputContainer}>
                     <Input
                         title="Password"
                         placeholder="Password"
@@ -68,7 +78,7 @@ const RegisterScreen = (props) => {
                             (text) => onChangeInput('email', text)
                         }
                     />
-                </View> */}
+                </View>
                 <Button
                     text="Register"
                     onPress={() => sendData()}
@@ -77,7 +87,7 @@ const RegisterScreen = (props) => {
                     <Text style={styles.text}>
                         Already have an account?
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                         <Text style={styles.registerText}>
                             Login
                         </Text>

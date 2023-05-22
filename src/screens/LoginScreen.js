@@ -1,13 +1,31 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../store / actions / profileAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { loginUser } from '../store/actions/profileAction';
 
 const LoginScreen = (props) => {
     const { navigation } = props
-
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const dispatch = useDispatch()
+    const globalProfileData = useSelector(store => store.profileReducer)
+    useEffect(() => {
+        console.log("Data Global")
+        console.log(globalProfileData)
+    })
+
+    const checkData = () => {
+        if (username === '' || password === '') {
+            alert('Mohon inputnya')
+        } else if ((username.toLowerCase() === globalProfileData.username.toLowerCase()) && (password.toLowerCase() === globalProfileData.password.toLowerCase())) {
+            dispatch(loginUser(true))
+            navigation.navigate('Start')
+        } else {
+            alert("credential salah")
+        }
+    }
     return (
         <ScrollView contentContainerStyle={styles.scroll}>
             <View style={styles.mainContainer}>
@@ -21,22 +39,25 @@ const LoginScreen = (props) => {
                     <Input
                         title="Username"
                         placeholder="Username"
+                        onChangeText={(text) => setUsername(text)}
                     />
                 </View>
                 <View style={styles.inputContainer}>
                     <Input
                         title="Password"
                         placeholder="Password"
+                        onChangeText={(text) => setPassword(text)}
                     />
                 </View>
                 <Button
+                    onPress={() => checkData()}
                     text="Login"
                 />
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>
                         Don't have an account?
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                         <Text style={styles.registerText}>
                             Register
                         </Text>
