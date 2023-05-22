@@ -51,7 +51,7 @@ const RegisterScreen = (props) => {
                         }
                     />
                 </View>
-                <View style={styles.inputContainer}>
+                {/* <View style={styles.inputContainer}>
                     <Input
                         title="Password"
                         placeholder="Password"
@@ -68,7 +68,7 @@ const RegisterScreen = (props) => {
                             (text) => onChangeInput('email', text)
                         }
                     />
-                </View>
+                </View> */}
                 <Button
                     text="Register"
                     onPress={() => sendData()}

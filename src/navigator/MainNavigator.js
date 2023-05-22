@@ -57,28 +57,32 @@ const StartScreen = () => {
 };
 const MainNavigator = () => {
     const isLogin = useSelector(store => store.profileReducer.isLogin);
+    console.log(isLogin)
     return (
         <NavigationContainer>
             {
-                isLogin ?
+                isLogin ? <Stack.Navigator initialRouteName="Start">
+
+                    <Stack.Screen
+                        name="Start"
+                        component={StartScreen}
+                        options={{ headerShown: false }}
+                    />
+                </Stack.Navigator> :
+                    <Stack.Navigator initialRouteName="Register">
+                        <Stack.Screen
+                            name="Login"
+                            component={LoginScreen}
+                            options={{ headerShown: false, }}
+                        />
+                        <Stack.Screen
+                            name="Register"
+                            component={RegisterScreen}
+                            options={{ headerShown: false, }}
+                        />
+                    </Stack.Navigator>
             }
-            <Stack.Navigator initialRouteName="Start">
-                <Stack.Screen
-                    name="Login"
-                    component={LoginScreen}
-                    options={{ headerShown: false, }}
-                />
-                <Stack.Screen
-                    name="Register"
-                    component={RegisterScreen}
-                    options={{ headerShown: false, }}
-                />
-                <Stack.Screen
-                    name="Start"
-                    component={StartScreen}
-                    options={{ headerShown: false }}
-                />
-            </Stack.Navigator>
+
         </NavigationContainer>
     )
 };
