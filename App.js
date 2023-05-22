@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <RegisterScreen />
+        <MainNavigator />
       </SafeAreaProvider>
     </Provider>
   )
